@@ -1,652 +1,181 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import { useState } from "react";
-
-// export default function Home() {
-//   const [formData, setFormData] = useState({
-//     imgUrl: "",
-//     title: "",
-//     news: "",
-//     tags: "",
-//     description: "",
-//     author: "",
-//   });
-
-//   const handleChange = (e) => {
-//     const { name, value } = e.target;
-//     setFormData((prev) => ({
-//       ...prev,
-//       [name]: value,
-//     }));
-//   };
-
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
-
-//     const response = await fetch("/api/news", {
-//       method: "POST",
-//       headers: {
-//         "Content-Type": "application/json",
-//       },
-//       body: JSON.stringify(formData),
-//     });
-
-//     if (response.ok) {
-//       alert("News saved successfully!");
-//       setFormData({
-//         imgUrl: "",
-//         title: "",
-//         news: "",
-//         tags: "",
-//         description: "",
-//         author: "",
-//       });
-//     } else {
-//       alert("Failed to save news.");
-//     }
-//   };
-
-//   return (
-//     <div className="container">
-//       <h1>Submit News</h1>
-//       <form onSubmit={handleSubmit}>
-//         <div className="input-group">
-//           <label>Image URL:</label>
-//           <input
-//             type="text"
-//             name="imgUrl"
-//             value={formData.imgUrl}
-//             onChange={handleChange}
-//             className="input"
-//           />
-//         </div>
-//         <div className="input-group">
-//           <label>Title:</label>
-//           <input
-//             type="text"
-//             name="title"
-//             value={formData.title}
-//             onChange={handleChange}
-//             className="input"
-//           />
-//         </div>
-//         <div className="input-group">
-//           <label>News:</label>
-//           <textarea
-//             name="news"
-//             value={formData.news}
-//             onChange={handleChange}
-//             className="input"
-//           />
-//         </div>
-//         <div className="input-group">
-//           <label>Tags:</label>
-//           <input
-//             type="text"
-//             name="tags"
-//             value={formData.tags}
-//             onChange={handleChange}
-//             className="input"
-//           />
-//         </div>
-//         <div className="input-group">
-//           <label>Description:</label>
-//           <textarea
-//             name="description"
-//             value={formData.description}
-//             onChange={handleChange}
-//             className="input"
-//           />
-//         </div>
-//         <div className="input-group">
-//           <label>Author:</label>
-//           <input
-//             type="text"
-//             name="author"
-//             value={formData.author}
-//             onChange={handleChange}
-//             className="input"
-//           />
-//         </div>
-//         <button type="submit" className="submit-btn">Submit</button>
-//       </form>
-//       <style jsx>{`
-//         .container {
-//           max-width: 800px;
-//           margin: 0 auto;
-//           padding: 20px;
-//           background: linear-gradient(135deg, #fbd3e9, #f7a1d7);
-//           border-radius: 12px;
-//           box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-//         }
-
-//         h1 {
-//           text-align: center;
-//           font-size: 2rem;
-//           margin-bottom: 20px;
-//           color: #d6336c;
-//         }
-
-//         .input-group {
-//           margin-bottom: 15px;
-//         }
-
-//         label {
-//           display: block;
-//           margin-bottom: 8px;
-//           font-weight: bold;
-//           color: #f56ca5;
-//         }
-
-//         .input {
-//           width: 100%;
-//           padding: 10px;
-//           border: 2px solid #f56ca5;
-//           border-radius: 8px;
-//           background: #fff;
-//           color: #333;
-//           font-size: 1rem;
-//           box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-//           transition: transform 0.3s ease, box-shadow 0.3s ease;
-//         }
-
-//         .input:focus {
-//           outline: none;
-//           transform: scale(1.02);
-//           box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-//         }
-
-//         .submit-btn {
-//           display: block;
-//           width: 100%;
-//           padding: 12px;
-//           background: linear-gradient(135deg, #ff8ac2, #ff2b7f);
-//           color: white;
-//           border: none;
-//           border-radius: 8px;
-//           font-size: 1.2rem;
-//           cursor: pointer;
-//           transition: transform 0.3s ease, background 0.3s ease;
-//         }
-
-//         .submit-btn:hover {
-//           transform: scale(1.05);
-//           background: linear-gradient(135deg, #ff2b7f, #ff8ac2);
-//         }
-
-//         @media (max-width: 600px) {
-//           .container {
-//             padding: 15px;
-//           }
-
-//           h1 {
-//             font-size: 1.5rem;
-//           }
-
-//           .input, .submit-btn {
-//             font-size: 1rem;
-//           }
-//         }
-//       `}</style>
-//     </div>
-//   );
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import { useState } from "react";
-
-// export default function Home() {
-//   const [formData, setFormData] = useState({
-//     imgUrl: "",
-//     title: "",
-//     news: "",
-//     tags: "",
-//     description: "",
-//     author: "",
-//   });
-
-//   const handleChange = (e) => {
-//     const { name, value } = e.target;
-//     setFormData((prev) => ({
-//       ...prev,
-//       [name]: value,
-//     }));
-//   };
-
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
-
-//     // Validation: Check for empty fields
-//     if (!formData.imgUrl || !formData.title || !formData.news) {
-//       alert("Please fill in all required fields.");
-//       return;
-//     }
-
-//     try {
-//       const response = await fetch("/api/news", {
-//         method: "POST",
-//         headers: {
-//           "Content-Type": "application/json",
-//         },
-//         body: JSON.stringify(formData),
-//       });
-
-//       if (response.ok) {
-//         alert("News saved successfully!");
-//         setFormData({
-//           imgUrl: "",
-//           title: "",
-//           news: "",
-//           tags: "",
-//           description: "",
-//           author: "",
-//         });
-//       } else {
-//         const errorData = await response.json();
-//         alert(`Failed to save news: ${errorData.message || 'Unknown error'}`);
-//       }
-//     } catch (error) {
-//       console.error("Error during submission:", error);
-//       alert("An error occurred while submitting the news. Please try again later.");
-//     }
-//   };
-
-//   return (
-//     <div className="container">
-//       <h1>Submit News</h1>
-//       <form onSubmit={handleSubmit}>
-//         <div className="input-group">
-//           <label>Image URL:</label>
-//           <input
-//             type="text"
-//             name="imgUrl"
-//             value={formData.imgUrl}
-//             onChange={handleChange}
-//             className="input"
-//           />
-//         </div>
-//         <div className="input-group">
-//           <label>Title:</label>
-//           <input
-//             type="text"
-//             name="title"
-//             value={formData.title}
-//             onChange={handleChange}
-//             className="input"
-//           />
-//         </div>
-//         <div className="input-group">
-//           <label>News:</label>
-//           <textarea
-//             name="news"
-//             value={formData.news}
-//             onChange={handleChange}
-//             className="input"
-//           />
-//         </div>
-//         <div className="input-group">
-//           <label>Tags:</label>
-//           <input
-//             type="text"
-//             name="tags"
-//             value={formData.tags}
-//             onChange={handleChange}
-//             className="input"
-//           />
-//         </div>
-//         <div className="input-group">
-//           <label>Description:</label>
-//           <textarea
-//             name="description"
-//             value={formData.description}
-//             onChange={handleChange}
-//             className="input"
-//           />
-//         </div>
-//         <div className="input-group">
-//           <label>Author:</label>
-//           <input
-//             type="text"
-//             name="author"
-//             value={formData.author}
-//             onChange={handleChange}
-//             className="input"
-//           />
-//         </div>
-//         <button type="submit" className="submit-btn">Submit</button>
-//       </form>
-//       <style jsx>{`
-//         .container {
-//           max-width: 800px;
-//           margin: 0 auto;
-//           padding: 20px;
-//           background: linear-gradient(135deg, #fbd3e9, #f7a1d7);
-//           border-radius: 12px;
-//           box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-//         }
-
-//         h1 {
-//           text-align: center;
-//           font-size: 2rem;
-//           margin-bottom: 20px;
-//           color: #d6336c;
-//         }
-
-//         .input-group {
-//           margin-bottom: 15px;
-//         }
-
-//         label {
-//           display: block;
-//           margin-bottom: 8px;
-//           font-weight: bold;
-//           color: #f56ca5;
-//         }
-
-//         .input {
-//           width: 100%;
-//           padding: 10px;
-//           border: 2px solid #f56ca5;
-//           border-radius: 8px;
-//           background: #fff;
-//           color: #333;
-//           font-size: 1rem;
-//           box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-//           transition: transform 0.3s ease, box-shadow 0.3s ease;
-//         }
-
-//         .input:focus {
-//           outline: none;
-//           transform: scale(1.02);
-//           box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-//         }
-
-//         .submit-btn {
-//           display: block;
-//           width: 100%;
-//           padding: 12px;
-//           background: linear-gradient(135deg, #ff8ac2, #ff2b7f);
-//           color: white;
-//           border: none;
-//           border-radius: 8px;
-//           font-size: 1.2rem;
-//           cursor: pointer;
-//           transition: transform 0.3s ease, background 0.3s ease;
-//         }
-
-//         .submit-btn:hover {
-//           transform: scale(1.05);
-//           background: linear-gradient(135deg, #ff2b7f, #ff8ac2);
-//         }
-
-//         @media (max-width: 600px) {
-//           .container {
-//             padding: 15px;
-//           }
-
-//           h1 {
-//             font-size: 1.5rem;
-//           }
-
-//           .input, .submit-btn {
-//             font-size: 1rem;
-//           }
-//         }
-//       `}</style>
-//     </div>
-//   );
-// }
-
-
-
-
-
-
-
-
-
-
-import { useState } from "react";
+import { useState } from 'react';
+import { useRouter } from 'next/router';
 
 export default function Home() {
-  const [formData, setFormData] = useState({
-    imgUrl: "",
-    title: "",
-    news: "",
-    tags: "",
-    description: "",
-    author: "",
-  });
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+  const [imgUrl, setImgUrl] = useState('');
+  const [news, setNews] = useState(''); // Added state for 'news'
+  const router = useRouter();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Validation: Check for empty fields
-    if (!formData.imgUrl || !formData.title || !formData.news) {
-      alert("Please fill in all required fields.");
-      return;
-    }
+    const data = { title, description, imgUrl, news }; // Include 'news' in the data object
 
     try {
-      const response = await fetch("/api/news", {
-        method: "POST",
+      // Submit the form data to the API
+      const response = await fetch('/api/submitData', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(data),
       });
 
-      // Check if response is OK, otherwise show error with details
+      const result = await response.json();
       if (response.ok) {
-        alert("News saved successfully!");
-        setFormData({
-          imgUrl: "",
-          title: "",
-          news: "",
-          tags: "",
-          description: "",
-          author: "",
-        });
+        // Redirect to the data-fetching page
+        router.push('/data');
       } else {
-        // Log the response status for debugging
-        console.error("Failed to submit:", response.status, response.statusText);
-
-        // Attempt to parse the response body and show specific error message
-        const errorData = await response.json();
-        alert(`Failed to save news: ${errorData.message || 'Unknown error'}`);
+        console.error(result.message);
       }
     } catch (error) {
-      console.error("Error during submission:", error);
-
-      // Show specific error messages based on error types
-      if (error.name === 'TypeError') {
-        alert("Network error. Please check your connection and try again.");
-      } else {
-        alert("An error occurred while submitting the news. Please try again later.");
-      }
+      console.error('Error submitting form data', error);
     }
   };
 
   return (
     <div className="container">
-      <h1>Submit News</h1>
-      <form onSubmit={handleSubmit}>
-        <div className="input-group">
-          <label>Image URL:</label>
+      <h1>Submit Your Data</h1>
+      <form onSubmit={handleSubmit} className="form">
+        <div className="form-group">
+          <label>Title</label>
           <input
             type="text"
-            name="imgUrl"
-            value={formData.imgUrl}
-            onChange={handleChange}
-            className="input"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            required
+            className="input-field"
           />
         </div>
-        <div className="input-group">
-          <label>Title:</label>
-          <input
-            type="text"
-            name="title"
-            value={formData.title}
-            onChange={handleChange}
-            className="input"
-          />
-        </div>
-        <div className="input-group">
-          <label>News:</label>
+        <div className="form-group">
+          <label>Description</label>
           <textarea
-            name="news"
-            value={formData.news}
-            onChange={handleChange}
-            className="input"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            required
+            className="input-field"
           />
         </div>
-        <div className="input-group">
-          <label>Tags:</label>
-          <input
-            type="text"
-            name="tags"
-            value={formData.tags}
-            onChange={handleChange}
-            className="input"
-          />
-        </div>
-        <div className="input-group">
-          <label>Description:</label>
+        <div className="form-group">
+          <label>News</label> {/* Changed label from 'news' */}
           <textarea
-            name="description"
-            value={formData.description}
-            onChange={handleChange}
-            className="input"
+            value={news} // Bind to 'news' state
+            onChange={(e) => setNews(e.target.value)} // Set 'news' value
+            required
+            className="input-field"
           />
         </div>
-        <div className="input-group">
-          <label>Author:</label>
+        <div className="form-group">
+          <label>Image URL</label>
           <input
-            type="text"
-            name="author"
-            value={formData.author}
-            onChange={handleChange}
-            className="input"
+            type="url"
+            value={imgUrl}
+            onChange={(e) => setImgUrl(e.target.value)}
+            required
+            className="input-field"
           />
         </div>
-        <button type="submit" className="submit-btn">Submit</button>
+        <button type="submit" className="submit-button">Submit</button>
       </form>
+
       <style jsx>{`
         .container {
-          max-width: 800px;
-          margin: 0 auto;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          height: 100vh;
+          background-color: #f4f7f6;
           padding: 20px;
-          background: linear-gradient(135deg, #fbd3e9, #f7a1d7);
-          border-radius: 12px;
-          box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+          perspective: 1000px; /* Adds perspective for 3D effect */
         }
 
         h1 {
-          text-align: center;
-          font-size: 2rem;
           margin-bottom: 20px;
-          color: #d6336c;
+          font-size: 2.5rem;
+          color: #333;
+          text-align: center;
         }
 
-        .input-group {
+        .form {
+          background: white;
+          padding: 20px;
+          border-radius: 12px;
+          box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+          width: 100%;
+          max-width: 400px;
+          transition: transform 0.3s ease, box-shadow 0.4s ease, filter 0.5s ease;
+          transform-style: preserve-3d;
+        }
+
+        .form:hover {
+          transform: rotateY(10deg) rotateX(10deg);
+          box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+          filter: brightness(1.1);
+        }
+
+        .form-group {
           margin-bottom: 15px;
         }
 
-        label {
+        .form-group label {
           display: block;
-          margin-bottom: 8px;
-          font-weight: bold;
-          color: #f56ca5;
+          margin-bottom: 5px;
+          font-weight: 600;
+          color: #555;
         }
 
-        .input {
-          width: 100%;
-          padding: 10px;
-          border: 2px solid #f56ca5;
-          border-radius: 8px;
-          background: #fff;
-          color: #333;
-          font-size: 1rem;
-          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-          transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .input:focus {
-          outline: none;
-          transform: scale(1.02);
-          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .submit-btn {
-          display: block;
+        .input-field {
           width: 100%;
           padding: 12px;
-          background: linear-gradient(135deg, #ff8ac2, #ff2b7f);
-          color: white;
-          border: none;
-          border-radius: 8px;
-          font-size: 1.2rem;
-          cursor: pointer;
-          transition: transform 0.3s ease, background 0.3s ease;
+          margin: 5px 0;
+          border: 1px solid #ddd;
+          border-radius: 10px;
+          font-size: 1rem;
+          transition: transform 0.3s ease, border-color 0.3s ease;
         }
 
-        .submit-btn:hover {
+        .input-field:focus {
+          border-color: #0070f3;
+          outline: none;
+          transform: scale(1.03);
+        }
+
+        .submit-button {
+          width: 100%;
+          padding: 12px;
+          background-color: #0070f3;
+          color: white;
+          font-size: 1.1rem;
+          border: none;
+          border-radius: 8px;
+          cursor: pointer;
+          transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .submit-button:hover {
+          background-color: #005bb5;
           transform: scale(1.05);
-          background: linear-gradient(135deg, #ff2b7f, #ff8ac2);
         }
 
         @media (max-width: 600px) {
-          .container {
+          h1 {
+            font-size: 2rem;
+          }
+
+          .form {
+            width: 100%;
             padding: 15px;
           }
 
-          h1 {
-            font-size: 1.5rem;
+          .input-field {
+            padding: 10px;
           }
 
-          .input, .submit-btn {
-            font-size: 1rem;
+          .submit-button {
+            padding: 10px;
           }
         }
       `}</style>
